@@ -20,7 +20,7 @@
                             </div>
 
                             @error('title')
-                                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
+                                <p class="text-xs text-blue-500 font-semibold mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
@@ -33,7 +33,7 @@
                             </div>
 
                             @error('salary')
-                                <p class="text-xs text-red-500 font-semibold mt-1">{{ $message }}</p>
+                                <p class="text-xs text-blue-500 font-semibold mt-1">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
