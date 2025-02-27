@@ -1,0 +1,3 @@
+<div>
+    {{ $paginator->links() }}
+</div>
