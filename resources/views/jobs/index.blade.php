@@ -1,21 +1,41 @@
 <x-layout>
-    <x-slot:heading>
-        Job Listings
-    </x-slot:heading>
+    <div class="space-y-10">
+        <section class="text-center pt-6">
+            <h1 class="font-bold text-4xl">Да потърсим Вашата обява за работа</h1>
 
-    <div class="space-y-4">
-        @foreach ($jobs as $job)
-            <a href="/jobs/{{ $job['id'] }}" class="block px-4 py-6 border border-gray-200 rounded-lg">
-                <div class="font-bold text-blue-500 text-sm">{{ $job->employer->name }}</div>
+            <x-forms.form action="/public/search" class="mt-6">
+                <x-forms.input :label="false" name="q" placeholder="Счетоводител..." />
+            </x-forms.form>
+        </section>
 
-                <div>
-                    <strong>{{ $job['title'] }}:</strong> Pays {{ $job['salary'] }} per year.
-                </div>
-            </a>
-        @endforeach
+        <section class="pt-10">
+            <x-section-heading>Приоритетни обяви</x-section-heading>
 
-        <div>
-            {{ $jobs->links() }}
-        </div>
+            <div class="grid lg:grid-cols-3 gap-8 mt-6">
+                @foreach($featuredJobs as $job)
+                    <x-job-card :$job />
+                @endforeach
+            </div>
+        </section>
+
+        <section>
+            <x-section-heading>Категории</x-section-heading>
+
+            <div class="mt-6 space-x-1">
+                @foreach($tags as $tag)
+                    <x-tag :$tag />
+                @endforeach
+            </div>
+        </section>
+
+        <section>
+            <x-section-heading>Последни обяви</x-section-heading>
+
+            <div class="mt-6 space-y-6">
+                @foreach($jobs as $job)
+                    <x-job-card-wide :$job />
+                @endforeach
+            </div>
+        </section>
     </div>
 </x-layout>
